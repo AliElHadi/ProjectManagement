@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'Projects/style.css' %}">
+    <meta charset="UTF-8">
+    <title>Employees</title>
+        <style>
+            .headerH1 {
+                font-family:"Raleway", sans-serif;
+                /*text-shadow: 2px 2px 1px black;*/
+                color: white;
+                font-size: 60px;
+                left: 0;
+                margin-top: -100px;
+                position: absolute;
+                text-align: center;
+                top: 50%;
+                width: 100%;
+                font-weight: lighter;
+            }
+            .headerH2, hr {
+                font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                /*text-shadow: 2px 2px 1px black;*/
+                color: white;
+                font-size: 30px;
+                left: 0;
+                margin-top: -130px;
+                position: absolute;
+                text-align: center;
+                top: 70%;
+                width: 100%;
+                font-weight: lighter;
+
+            }
+
+            .myHR {
+                width: 20%;
+                margin-left: 40%;
+
+            }
+
+            .employeeAndProjectsPages {
+                background-image: url("{% static 'Projects/images/forestbridge.jpg'%}");
+                background-position: center; /* Center the image */
+                background-repeat: no-repeat;
+                background-size: cover; /* Resize the background image to cover the entire container */
+                height: 700px;
+                width:100%;
+            }
+
+
+        </style>
+</head>
+<body class="employeeAndProjectsPages">
+
+
+            <nav>
+                <div class="logo">
+                    <a href="http://localhost:8000"><img src="https://i.ibb.co/g3zbkwC/Webp-net-resizeimage-1.png" ></a>
+                </div>
+                <ul>
+                    <li class="l1"><a href="http://localhost:8000">Home</a></li>
+                    <li class="l1"><a href="http://localhost:8000/AddEmployee">Add Employee</a></li>
+                    <li class="l1"><a href="http://localhost:8000/DeleteEmployee">Delete Employee</a></li>
+                    <li class="l1"><a href="http://localhost:8000/listE">List Employees</a></li>
+                    <li class="l1"><a href="http://localhost:8000/projects">Projects</a></li>
+                    <li class="l1"><a href="http://localhost:8000/login">Sign In</a></li>
+                </ul>
+            </nav>
+    <h1 class = "headerH1">KNOW YOUR EMPLOYEES</h1>
+    <hr class = "myHR" />
+    <h2 class = "headerH2">Choose from the options above!</h2>
+
+
+
+</body>
+</html>

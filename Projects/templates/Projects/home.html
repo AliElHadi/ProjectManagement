@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'Projects/style.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'Projects/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'Projects/style2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'Projects/custom.css' %}">
+
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+
+            <nav>
+                <div class="logo">
+                            <a href="http://localhost:8000"><img src="https://i.ibb.co/g3zbkwC/Webp-net-resizeimage-1.png" ></a>
+                </div>
+                <ul>
+                    <li><a href="http://localhost:8000">Home</a></li>
+                    <li><a href="http://localhost:8000/employees">Employees</a></li>
+                    <li><a href="http://localhost:8000/projects">Projects</a></li>
+                    <li><a href="http://localhost:8000/match">Matching</a></li>
+                    <li><a href="http://localhost:8000/report">Reports</a></li>
+                    <li><a href="http://localhost:8000/login">Sign in</a></li>
+                </ul>
+            </nav>
+
+
+<div id="slides-shop" class="cover-slides">
+    <ul class="slides-container">
+        <li class="text-center">
+            <img src="{% static 'Projects/images/managers.png' %}" alt="managers">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20"><strong>Welcome To <br> Project Management</strong></h1>
+                        <p class="m-b-40" style = "font-size: 30px;">Home of Managers</p>
+                        <p><a id="homepageShopButton" class="btn-hvr-hover" href="#" style="font-size: 15px">Register</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="text-center">
+            <img src="{%static 'Projects/images/linking.jpg'%}" alt="linking">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20"><strong>Quickly link <br /> Projects to Employees</strong></h1>
+                        <p><a id="homepageShopButton" class="btn-hvr-hover" href="#" style="font-size: 15px">Register</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="text-center">
+            <img src="{%static 'Projects/images/reports.png'%}" alt="reports">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20"><strong>Have access to <br /> important reports</strong></h1>
+                        <p><a id="homepageShopButton" class="btn-hvr-hover" href="#" style="font-size: 15px">Register</a></p>
+                        <p class="m-b-40"></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="text-center">
+            <img src="{%static 'Projects/images/click.jpg'%}" alt="click">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20"><strong>All with just <br /> a click!</strong></h1>
+                        <p class="m-b-40"></p>
+                        <p><a id="homepageShopButton" class="btn-hvr-hover" href="#" style="font-size: 15px">Register</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+</div>
+
+    <script src="{% static 'Projects/jquery-3.2.1.min.js'%}"></script>
+    <script src="{% static 'Projects/popper.min.js'%}"></script>
+    <script src="{% static 'Projects/bootstrap.min.js'%}"></script>
+    <script src="{% static 'Projects/jquery.superslides.min.js'%}"></script>
+    <script src="{% static 'Projects/bootstrap-select.js'%}"></script>
+    <script src="{% static 'Projects/bootsnav.js'%}"></script>
+    <script src="{% static 'Projects/custom.js'%}"></script>
+
+</body>
+</html>

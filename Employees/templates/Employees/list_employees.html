@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'Employees/style.css' %}">
+    <meta charset="UTF-8">
+    <title>List All Employees</title>
+    <style>
+            body {
+                color: #9b9494; /*req*/
+                background-color: #242121; /*req*/
+            }
+
+
+            #flex-container {
+                list-style-type: none; /*req*/
+                background-color:  #242121; /*req*/
+                display: flex;
+                flex-direction: column;
+                margin-left: 50px;
+                margin-top: 20px;
+                width: 500px;
+            }
+
+            li {
+                max-width: 450px; /*req*/
+                position: center; /*req*/
+                margin: 5px; /*req*/
+                border-bottom: 1px solid lightgray; /*req*/
+                display: flex; /*req*/
+
+            }
+
+
+            div > li > div {
+                float: left;
+            }
+
+            .img1 {
+                height: 80px; /*req*/
+                width: 80px;
+                border-radius: 40%
+
+            }
+
+            .text {
+                padding-left: 20px;
+            }
+
+            h4 {
+                font-size: 18px; /*req*/
+                margin-top: 15px; /*req*/
+            }
+
+            p {
+                color: #AAAAAA; /*req*/
+            }
+        </style>
+</head>
+
+
+<body>
+    <div class="logo">
+        <a href="http://localhost:8000"><img src="https://i.ibb.co/g3zbkwC/Webp-net-resizeimage-1.png" ></a>
+    </div>
+
+            <nav>
+                <ul>
+                    <li><a href="http://localhost:8000">Home</a></li>
+                    <li><a href="http://localhost:8000/employees">Employees</a></li>
+                    <li><a href="http://localhost:8000/projects">Projects</a></li>
+                    <li><a href="http://localhost:8000/match">Matching</a></li>
+                    <li><a href="http://localhost:8000/">Reports</a></li>
+                    <li><a href="http://localhost:8000/">Sign in</a></li>
+                </ul>
+            </nav>
+
+
+
+    <h1>All Employees Registered:</h1>
+    <div>
+    <ul id="flex-container">
+        {% for e in objects %}
+            <li>
+                <div>
+                    <img class="img1" src="{% static e.image %}">
+                </div>
+                <div class="text">
+                    <h4><b>ID: {{e.EID}}</b> - {{e.Name}} </h4>
+                    <p> {{e.Expertise}} - Has done {{e.TotalNumberProjectsDone}}  projects so far. </p>
+                    <p> Current Status: {{ e.Status }}</p>
+                </div>
+            </li>
+{% endfor %}
+    </ul>
+    </div>
+</body>
+</html>

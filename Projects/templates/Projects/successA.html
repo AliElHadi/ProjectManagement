@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'Projects/style.css' %}">
+    <meta charset="UTF-8">
+    <title>Success</title>
+
+    <style>
+            body {
+                color: #9b9494; /*req*/
+                background: white url("{%static 'Employees/images/success.jpg'%}");
+                background-size: 100% 750px;
+            }
+
+           h2 {
+              margin-left: 20px;
+              color: whitesmoke;
+           }
+
+        </style>
+</head>
+<body>
+    <div class="logo">
+        <a href="http://localhost:8000"><img src="https://i.ibb.co/g3zbkwC/Webp-net-resizeimage-1.png" ></a>
+    </div>
+
+            <nav class="n1">
+                <ul>
+                    <li class="l1"><a href="http://localhost:8000">Home</a></li>
+                    <li class="l1"><a href="http://localhost:8000/employees">Employees</a></li>
+                    <li class="l1"><a href="http://localhost:8000/projects">Projects</a></li>
+                    <li class="l1"><a href="http://localhost:8000/match">Matching</a></li>
+                    <li class="l1"><a href="http://localhost:8000/report">Reports</a></li>
+                    <li class="l1"><a href="http://localhost:8000/">Sign in</a></li>
+                </ul>
+            </nav>
+
+
+<h2>Done! Employee was Assigned Successfully</h2>
+</body>
+</html>

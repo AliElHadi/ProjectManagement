@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'Employees/style.css' %}">
+    <meta charset="UTF-8">
+    <title>Delete Employee</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+            body {
+                color: black; /*req*/
+                font-size: 19px;
+                font-family: 'Dosis', sans-serif;
+                background: white url("{%static 'Employees/images/delete.jpg'%}");
+                background-size: 100% 780px ;
+            }
+
+            input[type="submit"]{
+                background-color: #228b22;
+                border: none;
+                color: white;
+                padding: 16px 32px;
+                text-decoration: none;
+                margin: 4px 2px;
+                cursor: pointer;
+                font-size: 17px;
+            }
+            .h21{
+                font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+            }
+
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <a href="http://localhost:8000"><img src="https://i.ibb.co/g3zbkwC/Webp-net-resizeimage-1.png" ></a>
+    </div>
+
+            <nav>
+                <ul>
+                    <li><a href="http://localhost:8000">Home</a></li>
+                    <li><a href="http://localhost:8000/employees">Employees</a></li>
+                    <li><a href="http://localhost:8000/projects">Projects</a></li>
+                    <li><a href="http://localhost:8000/match">Matching</a></li>
+                    <li><a href="http://localhost:8000/">Reports</a></li>
+                    <li><a href="http://localhost:8000/">Sign in</a></li>
+                </ul>
+            </nav>
+
+
+
+
+<form action="" method="post">
+    <h2 class="h21">Enter valid Employee ID to delete</h2>
+  {% csrf_token %}
+  <table>
+  {{form.as_p}}
+  </table>
+    <input type="submit" value="Delete" /> </form>
+    <table>
+</table>
+</body>
+</html>

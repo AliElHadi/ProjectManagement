@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'Projects/style.css' %}">
+    <meta charset="UTF-8">
+    <title>Match Project with Employees</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+            body {
+                color: whitesmoke; /*req*/
+                background: white url("{%static 'Employees/images/match.jpg'%}");
+                background-size: 100% 780px ;
+                font-size: 19px;
+            }
+            input[type="submit"]{
+                background-color: #228b22;
+                border: none;
+                color: white;
+                padding: 16px 32px;
+                text-decoration: none;
+                margin: 4px 2px;
+                cursor: pointer;
+                font-size: 17px;
+            }
+        </style>
+</head>
+
+
+<body>
+    <div class="logo">
+        <a href="http://localhost:8000"><img src="https://i.ibb.co/g3zbkwC/Webp-net-resizeimage-1.png" ></a>
+    </div>
+
+            <nav class="n1">
+                <ul>
+                    <li class="l1"><a href="http://localhost:8000">Home</a></li>
+                    <li class="l1"><a href="http://localhost:8000/employees">Employees</a></li>
+                    <li class="l1"><a href="http://localhost:8000/projects">Projects</a></li>
+                    <li class="l1"><a href="http://localhost:8000/match">Matching</a></li>
+                    <li class="l1"><a href="http://localhost:8000/report">Reports</a></li>
+                    <li class="l1"><a href="http://localhost:8000/">Sign in</a></li>
+                </ul>
+            </nav>
+
+<h2>Please enter the valid project and employee IDs to Assign</h2>
+<form action="" method="post">
+  {% csrf_token %}
+  <table>
+  {{form}}
+  </table>
+    <input type="submit" value="Assign" /> </form>
+
+
+<h2>Unassigned Projects:</h2>
+{% for p in pr %}
+    {%if p.status == 'unassigned'%}
+        <h3>ID: {{p.projID}}  </h3>
+        <p>Project Name: {{ p.name }}</p>
+        <p>Project Description: {{ p.description }}</p>
+        <hr size="4" width="100%" color="red">
+    {% endif %}
+{% endfor %}
+<h2>Unassigned Employees:</h2>
+{% for e in em %}
+    {% if e.Status == 'unassigned' %}
+        <p>&bull; <b>ID: {{e.EID}}</b>  {{e.Name}} : {{e.Expertise}}  have done {{e.TotalNumberProjectsDone}}  projects so far.</p>
+    {% endif %}
+{% endfor %}
+</body>
+</html>

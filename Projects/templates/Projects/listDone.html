@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'Projects/style.css' %}">
+    <meta charset="UTF-8">
+    <title>List of Finished Projects</title>
+        <style>
+            body {
+                color: #9b9494; /*req*/
+                background-color: #242121; /*req*/
+            }
+
+
+            #flex-container {
+                list-style-type: none; /*req*/
+                background-color:  #242121; /*req*/
+                display: flex;
+                flex-direction: column;
+                margin-left: 50px;
+                margin-top: 20px;
+                width: 500px;
+            }
+
+            .l2 {
+                max-width: 450px; /*req*/
+                position: center; /*req*/
+                margin: 5px; /*req*/
+                border-bottom: 1px solid lightgray; /*req*/
+                display: flex; /*req*/
+
+            }
+
+
+            div > li > div {
+                float: left;
+            }
+
+            .img1 {
+                height: 80px; /*req*/
+                width: 80px;
+                border-radius: 40%
+
+            }
+
+            .text {
+
+                padding-left: 20px;
+            }
+
+            h4 {
+                font-size: 18px;
+                margin-top: 15px;
+                font-weight: bold;
+                color: snow;
+            }
+
+            p {
+                color: #AAAAAA; /*req*/
+            }
+
+
+        </style>
+</head>
+<body>
+    <div class="logo">
+        <a href="http://localhost:8000"><img src="https://i.ibb.co/g3zbkwC/Webp-net-resizeimage-1.png" ></a>
+    </div>
+
+            <nav class="n1">
+                <ul>
+                    <li class="l1"><a href="http://localhost:8000">Home</a></li>
+                    <li class="l1"><a href="http://localhost:8000/employees">Employees</a></li>
+                    <li class="l1"><a href="http://localhost:8000/projects">Projects</a></li>
+                    <li class="l1"><a href="http://localhost:8000/match">Matching</a></li>
+                    <li class="l1"><a href="http://localhost:8000/report">Reports</a></li>
+                    <li class="l1"><a href="http://localhost:8000/">Sign in</a></li>
+                </ul>
+            </nav>
+
+    <h1>Finished Projects:</h1>
+        <div>
+            <ul id="flex-container">
+                    <div class="text">
+                        {% for p in P %}
+                            {%if p.status == 'finished'%}
+                                <li class="l2">
+                                    <div>
+                                        <img class="img1" src="{% static p.image %}">
+                                    </div>
+                                    <div>
+                                        <h4>&nbspID: {{p.projID}}  </h4>
+                                        <h4>&nbspProject Name: {{ p.name }}</h4>
+                                        <h4>&nbspProject Description: {{ p.description }}</h4>
+                                    </div>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+            </ul>
+        </div>
+
+
+
+</body>
+</html>

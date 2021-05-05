@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'Employees/style.css' %}">
+    <meta charset="UTF-8">
+    <title>Create an Employee</title>
+    <style>
+            body {
+                color: whitesmoke; /*req*/
+                font-size: 19px;
+                background: white url("{% static 'Employees/images/add.jpg'%}");
+                background-size: 100% ;
+            }
+            input[type="submit"]{
+                background-color: #228b22;
+                border: none;
+                color: white;
+                padding: 16px 32px;
+                text-decoration: none;
+                margin: 4px 2px;
+                cursor: pointer;
+                font-size: 17px;
+            }
+        </style>
+</head>
+
+<body>
+    <div class="logo">
+        <a href="http://localhost:8000"><img src="https://i.ibb.co/g3zbkwC/Webp-net-resizeimage-1.png" ></a>
+    </div>
+
+            <nav>
+                <ul>
+                    <li><a href="http://localhost:8000">Home</a></li>
+                    <li><a href="http://localhost:8000/employees">Employees</a></li>
+                    <li><a href="http://localhost:8000/projects">Projects</a></li>
+                    <li><a href="http://localhost:8000/match">Matching</a></li>
+                    <li><a href="http://localhost:8000/">Reports</a></li>
+                    <li><a href="http://localhost:8000/">Sign in</a></li>
+                </ul>
+            </nav>
+
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Add Employee"/>
+</form>
+</body>
+</html>
