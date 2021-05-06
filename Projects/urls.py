@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from .views import AddProject, success, home, idfound, listProjectsAssignedwEmployees, \
-     deleteProject, listProjectsUnAssigned, match, projects, employees, listE, login, finish, listDone, report, \
-     reportProject, reportEmployee, register
+     deleteProject, listProjectsUnAssigned, match, projects, employees, listE, loginn, finish, listDone, report, \
+     reportProject, reportEmployee, register, logoutUser
 
 urlpatterns = [
 #    path('', views.index, name='index'),
@@ -16,11 +16,13 @@ urlpatterns = [
      url('projects/', projects),
      url('employees/',employees),
      url('listE/',listE),
-     url('login/',login),
+     url('login/',loginn),
      url('register/', register),
      url('finish/',finish),
      url('listDone/',listDone),
      url('report/', report),
      url('RP/',reportProject),
-     url('RE/', reportEmployee)
+     url('RE/', reportEmployee),
+     url('logout/', logoutUser)
+
 ]

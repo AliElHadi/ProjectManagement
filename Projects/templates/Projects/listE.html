@@ -18,12 +18,17 @@
         <a href="http://localhost:8000"><img src="https://i.ibb.co/g3zbkwC/Webp-net-resizeimage-1.png" ></a>
     </div>
 
-            <nav>
+            <nav class="n1">
                 <ul>
-                    <li><a href="http://localhost:8000">Home</a></li>
-                    <li><a href="http://localhost:8000/ListEmployees/">All Employees</a></li>
-                    <li><a href="http://localhost:8000/ListUnAssigned/">UnAssigned Employees</a></li>
-                    <li><a href="http://localhost:8000/projects">Projects</a></li>
+                    <li class="l1"><a href="http://localhost:8000">Home</a></li>
+                    <li class="l1"><a href="http://localhost:8000/ListEmployees/">All Employees</a></li>
+                    <li class="l1"><a href="http://localhost:8000/ListUnAssigned/">UnAssigned Employees</a></li>
+                    <li class="l1"><a href="http://localhost:8000/projects">Projects</a></li>
+                    {% if request.user.is_authenticated %}
+                        <li class="l1"><a href="http://localhost:8000/logout">Logout</a></li>
+                    {% else %}
+                        <li class="l1"><a href="http://localhost:8000/login">Sign in</a></li>
+                    {% endif %}
                 </ul>
             </nav>
 

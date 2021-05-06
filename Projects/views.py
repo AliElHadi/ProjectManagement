@@ -7,12 +7,14 @@ from django.contrib.auth.forms import UserCreationForm
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
     return render(request,'Projects/home.html')
 
 
+@login_required(login_url='http://localhost:8000/login')
 def AddProject(request):
     if request.method == 'POST':
         form = CreateProjectForm(request.POST)
@@ -41,22 +43,27 @@ def AddProject(request):
     return render(request, 'Projects/createproject.html', {'form': form})
 
 
+@login_required(login_url='http://localhost:8000/login')
 def success(request):
     return render(request, 'Projects/success.html')
 
 
+@login_required(login_url='http://localhost:8000/login')
 def idfound(request):
     return render(request,'Projects/idfound.html')
 
 
+@login_required(login_url='http://localhost:8000/login')
 def listProjectsAssignedwEmployees(request):
     return render(request, 'Projects/listPAwE.html',{'P': Project.objects.all(), 'E': Employee.objects.all()})
 
 
+@login_required(login_url='http://localhost:8000/login')
 def listProjectsUnAssigned(request):
     return render(request, 'Projects/listPUA.html',{'P':Project.objects.all()})
 
 
+@login_required(login_url='http://localhost:8000/login')
 def deleteProject(request):
     if request.method == 'POST':
         form =deleteproject(request.POST)
@@ -80,6 +87,7 @@ def deleteProject(request):
     return render(request, 'Projects/delete_project.html', {'form': form})
 
 
+@login_required(login_url='http://localhost:8000/login')
 def match(request):
     if request.method == 'POST':
         form =matchform(request.POST)
@@ -88,7 +96,7 @@ def match(request):
             Matchform = form.cleaned_data
             projID = Matchform['projID']
             EID = Matchform['EID']
-
+            b = False
             for p in Project.objects.all():
                 if p.projID == projID:
                     for e in Employee.objects.all():
@@ -97,36 +105,48 @@ def match(request):
                             e.delete()
                             b.save()
                             e1= e
-                    f = Project(projID=p.projID, name=p.name, description=p.description, status='assigned',image=p.image)
-                    p.delete()
-                    f.save()
-                    return render(request, 'Projects/successA.html')
+                            b = True
+                    if b == True:
+                        f = Project(projID=p.projID, name=p.name, description=p.description, status='assigned', image=p.image)
+                        p.delete()
+                        f.save()
+                        return render(request, 'Projects/successA.html')
+                    else:
+                        return render(request, 'Projects/employee_assigned.html')
+
+
 
     else:
         form = matchform()
     return render(request, 'Projects/match.html', {'form': form, 'em': Employee.objects.all(), 'pr': Project.objects.all()})
 
 
+@login_required(login_url='http://localhost:8000/login')
 def projects(request):
     return render(request, 'Projects/projects.html')
 
 
+@login_required(login_url='http://localhost:8000/login')
 def employees(request):
     return render(request, 'Projects/employees.html')
 
 
+@login_required(login_url='http://localhost:8000/login')
 def listE(request):
     return render(request, 'Projects/listE.html')
 
 
+@login_required(login_url='http://localhost:8000/login')
 def listDone(request):
     return render(request, 'Projects/listDone.html', {'P':Project.objects.all()})
 
 
+@login_required(login_url='http://localhost:8000/login')
 def report(request):
     return render(request,'Projects/report.html')
 
 
+@login_required(login_url='http://localhost:8000/login')
 def reportEmployee(request):
     if request.method == 'POST':
         form =REform(request.POST)
@@ -144,6 +164,7 @@ def reportEmployee(request):
     return render(request, 'Projects/RE.html', {'form': form})
 
 
+@login_required(login_url='http://localhost:8000/login')
 def reportProject(request):
     if request.method == 'POST':
         form =RPform(request.POST)
@@ -161,6 +182,7 @@ def reportProject(request):
     return render(request, 'Projects/RP.html', {'form': form})
 
 
+@login_required(login_url='http://localhost:8000/login')
 def finish(request):
     if request.method == 'POST':
         form =finishform(request.POST)
@@ -170,7 +192,7 @@ def finish(request):
             projID = Finishform['projID']
 
             for p in Project.objects.all():
-                if p.projID == projID:
+                if p.projID == projID and p.status == 'assigned':
                     for e in Employee.objects.all():
                         if e.ProjectID == projID:
                             t = int(e.TotalNumberProjectsDone) + 1
@@ -181,13 +203,15 @@ def finish(request):
                     p.delete()
                     f.save()
                     return render(request, 'Projects/successF.html')
-
+            return render(request, 'Projects/project_unassigned.html')
     else:
         form = finishform()
     return render(request, 'Projects/finish.html', {'form': form, 'em': Employee.objects.all(), 'pr': Project.objects.all()})
 
 
 def register(request):
+    if request.user.is_authenticated:
+        return redirect('http://localhost:8000')
     form = CreateUserForm()
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
@@ -203,8 +227,20 @@ def register(request):
 
 def loginn(request):
     if request.method == 'POST':
-        request.POST.get
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request,username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('http://localhost:8000')
+        else:
+            messages.info(request, 'Username OR password is incorrect')
     context = {}
     return render(request, 'Projects/login.html', context)
 
+
+@login_required(login_url='http://localhost:8000/login')
+def logoutUser(request):
+    logout(request)
+    return redirect('http://localhost:8000/login')
 

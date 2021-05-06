@@ -5,6 +5,15 @@
     <link rel="stylesheet" type="text/css" href="{% static 'Employees/style.css' %}">
     <meta charset="UTF-8">
     <title>Employee Not Registered</title>
+    <style>
+        body {
+                color: black; /*req*/
+                font-size: 19px;
+                font-family: 'Dosis', sans-serif;
+                background: white url("{%static 'Employees/images/error.jpg'%}");
+                background-size: 100% 780px ;
+            }
+    </style>
 </head>
 <body>
     <div class="logo">
@@ -17,15 +26,17 @@
                     <li><a href="http://localhost:8000/employees">Employees</a></li>
                     <li><a href="http://localhost:8000/projects">Projects</a></li>
                     <li><a href="http://localhost:8000/match">Matching</a></li>
-                    <li><a href="http://localhost:8000/">Reports</a></li>
-                    <li><a href="http://localhost:8000/">Sign in</a></li>
-                    <li><a href="http://localhost:8000/">Sign up</a></li>
+                    <li><a href="http://localhost:8000/report">Reports</a></li>
+                    {% if request.user.is_authenticated %}
+                        <li><a href="http://localhost:8000/logout">Logout</a></li>
+                    {% else %}
+                        <li><a href="http://localhost:8000/login">Sign in</a></li>
+                    {% endif %}
                 </ul>
             </nav>
 
 
 
 <h1>Employee with this ID is not Registered or Deleted</h1>
-<form action="http://localhost:8000/"><input type="submit" value="HOME" /></form>
 </body>
 </html>

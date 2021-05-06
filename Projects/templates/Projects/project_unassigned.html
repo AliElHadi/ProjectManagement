@@ -4,14 +4,17 @@
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'Projects/style.css' %}">
     <meta charset="UTF-8">
-    <title>Report</title>
-     <style>
-            body {
-                color: #9b9494; /*req*/
-                background: white url("{%static 'Employees/images/report1.jpg'%}");
-                background-size: 100% 750px;
+    <title>Project Not Registered</title>
+
+    <style>
+        body {
+                color: black; /*req*/
+                font-size: 19px;
+                font-family: 'Dosis', sans-serif;
+                background: white url("{%static 'Employees/images/error.jpg'%}");
+                background-size: 100% 780px ;
             }
-            </style>
+    </style>
 </head>
 <body>
     <div class="logo">
@@ -23,8 +26,8 @@
                     <li class="l1"><a href="http://localhost:8000">Home</a></li>
                     <li class="l1"><a href="http://localhost:8000/employees">Employees</a></li>
                     <li class="l1"><a href="http://localhost:8000/projects">Projects</a></li>
-                    <li class="l1"><a href="http://localhost:8000/RE">Report Employee</a></li>
-                    <li class="l1"><a href="http://localhost:8000/RP">Report Project</a></li>
+                    <li class="l1"><a href="http://localhost:8000/match">Matching</a></li>
+                    <li class="l1"><a href="http://localhost:8000/report">Reports</a></li>
                     {% if request.user.is_authenticated %}
                         <li class="l1"><a href="http://localhost:8000/logout">Logout</a></li>
                     {% else %}
@@ -33,6 +36,6 @@
                 </ul>
             </nav>
 
-
+<h1>Project with this ID is not Registered, Deleted or UnAssigned</h1>
 </body>
 </html>

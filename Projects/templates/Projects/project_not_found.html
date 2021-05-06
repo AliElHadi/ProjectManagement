@@ -5,24 +5,37 @@
     <link rel="stylesheet" type="text/css" href="{% static 'Projects/style.css' %}">
     <meta charset="UTF-8">
     <title>Project Not Registered</title>
+
+    <style>
+        body {
+                color: black; /*req*/
+                font-size: 19px;
+                font-family: 'Dosis', sans-serif;
+                background: white url("{%static 'Employees/images/error.jpg'%}");
+                background-size: 100% 780px ;
+            }
+    </style>
 </head>
 <body>
     <div class="logo">
         <a href="http://localhost:8000"><img src="https://i.ibb.co/g3zbkwC/Webp-net-resizeimage-1.png" ></a>
     </div>
 
-            <nav>
+            <nav class="n1">
                 <ul>
-                    <li><a href="http://localhost:8000">Home</a></li>
-                    <li><a href="http://localhost:8000/employees">Employees</a></li>
-                    <li><a href="http://localhost:8000/projects">Projects</a></li>
-                    <li><a href="http://localhost:8000/match">Matching</a></li>
-                    <li><a href="http://localhost:8000/report">Reports</a></li>
-                    <li><a href="http://localhost:8000/">Sign in</a></li>
+                    <li class="l1"><a href="http://localhost:8000">Home</a></li>
+                    <li class="l1"><a href="http://localhost:8000/employees">Employees</a></li>
+                    <li class="l1"><a href="http://localhost:8000/projects">Projects</a></li>
+                    <li class="l1"><a href="http://localhost:8000/match">Matching</a></li>
+                    <li class="l1"><a href="http://localhost:8000/report">Reports</a></li>
+                    {% if request.user.is_authenticated %}
+                        <li class="l1"><a href="http://localhost:8000/logout">Logout</a></li>
+                    {% else %}
+                        <li class="l1"><a href="http://localhost:8000/login">Sign in</a></li>
+                    {% endif %}
                 </ul>
             </nav>
 
 <h1>Project with this ID is not Registered or Deleted</h1>
-<form action="http://localhost:8000/"><input type="submit" value="HOME" /></form>
 </body>
 </html>

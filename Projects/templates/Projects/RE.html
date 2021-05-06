@@ -61,7 +61,11 @@
                     <li class="l1"><a href="http://localhost:8000/projects">Projects</a></li>
                     <li class="l1"><a href="http://localhost:8000/match">Matching</a></li>
                     <li class="l1"><a href="http://localhost:8000/report">Reports</a></li>
-                    <li class="l1"><a href="http://localhost:8000/">Sign in</a></li>
+                    {% if request.user.is_authenticated %}
+                        <li class="l1"><a href="http://localhost:8000/logout">Logout</a></li>
+                    {% else %}
+                        <li class="l1"><a href="http://localhost:8000/login">Sign in</a></li>
+                    {% endif %}
                 </ul>
             </nav>
     <h2>Please enter a valid employee ID Report</h2>

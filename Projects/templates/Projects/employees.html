@@ -53,21 +53,26 @@
         </style>
 </head>
 <body class="employeeAndProjectsPages">
+        <div class="logo">
+            <a href="http://localhost:8000"><img src="https://i.ibb.co/g3zbkwC/Webp-net-resizeimage-1.png" ></a>
+        </div>
+        <nav>
+            <ul>
+                <li class="l1"><a href="http://localhost:8000">Home</a></li>
+                <li class="l1"><a href="http://localhost:8000/AddEmployee">Add Employee</a></li>
+                <li class="l1"><a href="http://localhost:8000/DeleteEmployee">Delete Employee</a></li>
+                <li class="l1"><a href="http://localhost:8000/listE">List Employees</a></li>
+                <li class="l1"><a href="http://localhost:8000/projects">Projects</a></li>
+                {% if request.user.is_authenticated %}
+                    <li class="l1"><a href="http://localhost:8000/logout">Logout</a></li>
+                {% else %}
+                    <li class="l1"><a href="http://localhost:8000/login">Sign in</a></li>
+                {% endif %}
+            </ul>
+        </nav>
 
 
-            <nav>
-                <div class="logo">
-                    <a href="http://localhost:8000"><img src="https://i.ibb.co/g3zbkwC/Webp-net-resizeimage-1.png" ></a>
-                </div>
-                <ul>
-                    <li class="l1"><a href="http://localhost:8000">Home</a></li>
-                    <li class="l1"><a href="http://localhost:8000/AddEmployee">Add Employee</a></li>
-                    <li class="l1"><a href="http://localhost:8000/DeleteEmployee">Delete Employee</a></li>
-                    <li class="l1"><a href="http://localhost:8000/listE">List Employees</a></li>
-                    <li class="l1"><a href="http://localhost:8000/projects">Projects</a></li>
-                    <li class="l1"><a href="http://localhost:8000/login">Sign In</a></li>
-                </ul>
-            </nav>
+
     <h1 class = "headerH1">KNOW YOUR EMPLOYEES</h1>
     <hr class = "myHR" />
     <h2 class = "headerH2">Choose from the options above!</h2>

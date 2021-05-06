@@ -22,7 +22,7 @@
                 width: 500px;
             }
 
-            li {
+            .li1 {
                 max-width: 450px; /*req*/
                 position: center; /*req*/
                 margin: 5px; /*req*/
@@ -70,8 +70,12 @@
                     <li><a href="http://localhost:8000/employees">Employees</a></li>
                     <li><a href="http://localhost:8000/projects">Projects</a></li>
                     <li><a href="http://localhost:8000/match">Matching</a></li>
-                    <li><a href="http://localhost:8000/">Reports</a></li>
-                    <li><a href="http://localhost:8000/">Sign in</a></li>
+                    <li><a href="http://localhost:8000/report">Reports</a></li>
+                    {% if request.user.is_authenticated %}
+                        <li><a href="http://localhost:8000/logout">Logout</a></li>
+                    {% else %}
+                        <li><a href="http://localhost:8000/login">Sign in</a></li>
+                    {% endif %}
                 </ul>
             </nav>
 
@@ -81,7 +85,7 @@
     <div>
     <ul id="flex-container">
         {% for e in objects %}
-            <li>
+            <li class="li1">
                 <div>
                     <img class="img1" src="{% static e.image %}">
                 </div>
